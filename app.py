@@ -21,7 +21,7 @@ def generate_content(prompt):
         return None
 
 # Replace 'YOUR_API_KEY' with your actual API key
-api_key = "AIzaSyBVvCHkMQddzeHRAIxSk_sRUYDCdtCfKbU"
+api_key = "AIzaSyCizjMC8ZTw93-EW4uZHjlG1Gg5oQfkyZc"
 
 # Configuration
 configure_generative_ai(api_key)
