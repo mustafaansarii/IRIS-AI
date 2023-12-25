@@ -20,21 +20,44 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            background-color: #3498db;
-            color: #fff;
+            padding: 20px;
+            background-color: transparent; /* Set background color to transparent */
+            color: #040303;
         }
 
         .logo {
-            max-height: 50px;
+            max-height: 40px;
             margin-right: 10px;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .menu-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .header-link {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .header-link:hover {
+            text-decoration: underline;
         }
 
         .chat-container {
             border: 0px solid #ccc;
             padding: 20px;
-            margin-bottom: 150px;
-            max-width: 10000px;
+            margin-bottom: 110px;
+            max-width: auto ;
             margin: auto;
         }
 
@@ -70,23 +93,26 @@
             width: calc(80% - 20px);
             padding: 15px;
             box-sizing: border-box;
-            font-size: 16px;
+            font-size: 13px;
             border: 1px solid #ddd;
             border-radius: 50px;
             outline: none;
             margin-bottom: 10px;
         }
 
-        #sendButton {
-            padding: 10px;
+        #sendButton, #refreshButton {
+            padding: 15px;
             box-sizing: border-box;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: #fff;
+            font-size: 14px;
             border: none;
-            border-radius: 50%;
+            border-radius: 80%;
             cursor: pointer;
             margin-left: 10px;
+        }
+
+        #sendButton {
+            background-color: #4CAF50;
+            color: #fff;
         }
 
         #sendButton:hover {
@@ -94,15 +120,8 @@
         }
 
         #refreshButton {
-            padding: 10px;
-            box-sizing: border-box;
-            font-size: 16px;
-            background-color: #3498db;
+            background-color: #db3434;
             color: #fff;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            margin-left: 10px;
         }
 
         #refreshButton:hover {
@@ -122,33 +141,44 @@
             margin-top: 10px;
         }
 
-        /* Header Links Style */
-        .header-links {
-            display: flex;
-            justify-content: flex-end;
-        }
+        @media only screen and (max-width: 600px) {
+            .menu-icon {
+                display: block;
+            }
 
-        .header-link {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            margin-left: 20px;
-        }
+            .menu-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #3498db;
+                text-align: center;
+            }
 
-        .header-link:hover {
-            text-decoration: underline;
+            .menu-links a {
+                margin: 10px 0;
+            }
+
+            .menu-links.show {
+                display: flex;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
     <div class="header">
-        <img src="  " alt="Mustafa AI" class="logo">
+        <img src="https://scontent.fixc10-2.fna.fbcdn.net/v/t39.30808-6/414053139_271849852567187_6169658387589043221_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=A2w2MoDWgW4AX9pSI_c&_nc_ht=scontent.fixc10-2.fna&oh=00_AfB8EezY78HGadGpb9QEBytaHodgovNxI1hlKoiH039OqA&oe=658DC635" alt="Mustafa AI" class="logo">
+        <!-- Hamburger Menu Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <!-- Header Links -->
-        <div class="header-links">
-            <a href="http://mustafaansari.rf.gd/#about" class="header-link">About</a>
-            <a href="https://www.biodrop.io/mustafaansarii" class="header-link">Developer</a>
-            <a href="https://www.biodrop.io/mustafaansarii" class="header-link">Policy</a>
+        <div class="menu-links">
+            <a href="http://mustafaansari.rf.gd/" class="header-link">About</a>
+            <a href="https://github.com/mustafaansarii" class="header-link">Projects</a>
+            <a href="https://www.linkedin.com/in/mustafands/" class="header-link">Contacts</a>
+
         </div>
     </div>
 
@@ -221,6 +251,11 @@
 
         function handleKeyDown() {
             if (event.key === 'Enter') sendMessage();
+        }
+
+        function toggleMenu() {
+            const menuLinks = document.querySelector('.menu-links');
+            menuLinks.classList.toggle('show');
         }
     </script>
 </body>
