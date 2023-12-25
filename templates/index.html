@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUSTAFA AI Web Interface</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
         body {
@@ -82,7 +84,7 @@
             width: 100%;
             background-color: #ffffff00;
             box-shadow: 0px -5px 10px rgba(0, 0, 0, 0);
-            padding: 15px;
+            padding: 25px;
             box-sizing: border-box;
             display: flex;
             align-items: center;
@@ -90,14 +92,23 @@
         }
 
         #userInput {
-            width: calc(80% - 20px);
+            width: calc(70% - 20px);
             padding: 15px;
             box-sizing: border-box;
             font-size: 13px;
             border: 1px solid #ddd;
             border-radius: 50px;
             outline: none;
-            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+
+        #loadingButton {
+            background-color: #04aa6d00;
+            border: none;
+            color: rgba(0, 0, 0, 0.614);
+            padding: 12px 24px;
+            font-size: 16px;
+            display: none; /* Initially hidden */
         }
 
         #sendButton, #refreshButton {
@@ -178,18 +189,25 @@
             <a href="http://mustafaansari.rf.gd/" class="header-link">About</a>
             <a href="https://github.com/mustafaansarii" class="header-link">Projects</a>
             <a href="https://www.linkedin.com/in/mustafands/" class="header-link">Contacts</a>
-
         </div>
     </div>
 
     <!-- Chat Container -->
     <div class="chat-container" id="conversation"></div>
 
-    <!-- User Input Section -->
+    <!-- User Input Section with Loading Button -->
     <div id="userInputContainer">
         <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown()">
-        <button id="sendButton" onclick="sendMessage()">➤</button>
-        <button id="refreshButton" onclick="clearConversation()">↻</button>
+        <!-- Loading button initially hidden -->
+        <button id="loadingButton">
+            <i class="fa fa-spinner fa-spin"></i> Responding
+        </button>
+        <button id="sendButton" onclick="sendMessage()">
+            ➤
+        </button>
+        <button id="refreshButton" onclick="clearConversation()">
+            ↻
+        </button>
     </div>
 
     <!-- Copyright Footer -->
@@ -219,6 +237,10 @@
             const userInput = document.getElementById('userInput').value;
             if (!userInput) return;
 
+            // Show loading button, hide send button
+            document.getElementById('loadingButton').style.display = 'block';
+            document.getElementById('sendButton').style.display = 'none';
+
             fetch('/api/generate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -226,11 +248,20 @@
             })
             .then(response => response.json())
             .then(data => {
+                // Hide loading button, show send button
+                document.getElementById('loadingButton').style.display = 'none';
+                document.getElementById('sendButton').style.display = 'inline-block';
+
                 appendToConversation('You', userInput);
                 appendToConversation('Mustafa AI  <br><br>', data.response);
                 conversationHistory = data.history;
             })
-            .catch(error => { console.error('Error:', error); });
+            .catch(error => {
+                // Hide loading button, show send button on error
+                document.getElementById('loadingButton').style.display = 'none';
+                document.getElementById('sendButton').style.display = 'inline-block';
+                console.error('Error:', error);
+            });
 
             document.getElementById('userInput').value = '';
         }
@@ -246,7 +277,9 @@
                 document.getElementById('conversation').innerHTML = '';
                 conversationHistory = data.history;
             })
-            .catch(error => { console.error('Error:', error); });
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
 
         function handleKeyDown() {
