@@ -1,157 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>MUSTAFA Ai Web Interface</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSTAFA AI Web Interface</title>
 
-   <style>
-       body {
-           font-family: Arial, sans-serif;
-           margin: 0;
-           padding: 0;
-           display: flex;
-           flex-direction: column;
-           height: 100vh;
-           justify-content: space-between;
-       }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+        }
 
-       .chat-container {
-           border: 0px solid #ccc;
-           padding: 85px;
-           margin-bottom: 85px;
-           max-width: 10000px;
-           margin: auto;
-       }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+        }
 
-       .user-message, .ai-message {
-           padding: 15px;
-           margin-bottom: 10px;
-           border-radius: 10px;
-           word-wrap: break-word;
-       }
+        .logo {
+            max-height: 50px;
+            margin-right: 10px;
+        }
 
-       .user-message {
-           background-color: #e6f7ff;
-       }
+        .chat-container {
+            border: 0px solid #ccc;
+            padding: 20px;
+            margin-bottom: 150px;
+            max-width: 10000px;
+            margin: auto;
+        }
 
-       .ai-message {
-           background-color: #f0f0f0;
-       }
+        .user-message, .ai-message {
+            padding: 15px;
+            margin-bottom: 60px;
+            border-radius: 10px;
+            word-wrap: break-word;
+        }
 
-       #userInputContainer {
-           position: fixed;
-           bottom: 0;
-           width: 100%;
-           background-color: #fff;
-           box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
-           padding: 15px;
-           box-sizing: border-box;
-           display: flex;
-           align-items: center;
-           z-index: 999;
-       }
+        .user-message {
+            background-color: #e6f7ff;
+        }
 
-       #userInput {
-           width: calc(90% - 20px);
-           padding: 15px;
-           box-sizing: border-box;
-           font-size: 16px;
-           border: 1px solid #ddd;
-           border-radius: 50px; /* Round shape */
-           outline: none;
-       }
+        .ai-message {
+            background-color: #f0f0f0;
+        }
 
-       #refreshButton {
-           padding: 10px;
-           box-sizing: border-box;
-           font-size: 16px;
-           background-color: #3498db;
-           color: #fff;
-           border: none;
-           border-radius: 50%; /* Round shape */
-           cursor: pointer;
-           margin-left: 10px;
-       }
+        #userInputContainer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #ffffff00;
+            box-shadow: 0px -5px 10px rgba(0, 0, 0, 0);
+            padding: 15px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            z-index: 999;
+        }
 
-       #refreshButton:hover {
-           background-color: #2980b9;
-       }
-   </style>
+        #userInput {
+            width: calc(80% - 20px);
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            outline: none;
+            margin-bottom: 10px;
+        }
+
+        #sendButton {
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        #sendButton:hover {
+            background-color: #45a049;
+        }
+
+        #refreshButton {
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        #refreshButton:hover {
+            background-color: #2980b9;
+        }
+
+        /* Copyright Footer Style */
+        #copyrightFooter {
+            text-align: center;
+            padding: 0px;
+            background-color: #ffffff;
+            color: #00000072;
+            position: fixed;
+            bottom: 5px;
+            width: 100%;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        /* Header Links Style */
+        .header-links {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .header-link {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .header-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-   <div class="chat-container" id="conversation"></div>
-   <div id="userInputContainer">
-       <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown()">
-       <button id="refreshButton" onclick="clearConversation()">↻</button>
-   </div>
+    <!-- Header Section -->
+    <div class="header">
+        <img src="  " alt="Mustafa AI" class="logo">
+        <!-- Header Links -->
+        <div class="header-links">
+            <a href="http://mustafaansari.rf.gd/#about" class="header-link">About</a>
+            <a href="https://www.biodrop.io/mustafaansarii" class="header-link">Developer</a>
+            <a href="https://www.biodrop.io/mustafaansarii" class="header-link">Policy</a>
+        </div>
+    </div>
 
-   <script>
-       let conversationHistory = "";
+    <!-- Chat Container -->
+    <div class="chat-container" id="conversation"></div>
 
-       function appendToConversation(user, text) {
-           const chatContainer = document.getElementById('conversation');
-           const messageElement = document.createElement('p');
-           messageElement.className = user === 'You' ? 'user-message' : 'ai-message';
-           messageElement.innerHTML = `<strong>${user}</strong> ${formatText(text)}`;
-           chatContainer.appendChild(messageElement);
+    <!-- User Input Section -->
+    <div id="userInputContainer">
+        <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown()">
+        <button id="sendButton" onclick="sendMessage()">➤</button>
+        <button id="refreshButton" onclick="clearConversation()">↻</button>
+    </div>
 
-           // Scroll to the bottom for better visibility of the latest messages
-           chatContainer.scrollTop = chatContainer.scrollHeight;
-       }
+    <!-- Copyright Footer -->
+    <div id="copyrightFooter">
+        &copy; 2023 developer Mustafa
+    </div>
 
-       function formatText(text) {
-           // Replace line breaks with HTML line breaks
-           return text.replace(/\n/g, '<br>');
-       }
+    <script>
+        let conversationHistory = "";
 
-       function sendMessage() {
-           const userInput = document.getElementById('userInput').value;
-           if (!userInput) return;
+        function appendToConversation(user, text) {
+            const chatContainer = document.getElementById('conversation');
+            const messageElement = document.createElement('p');
+            messageElement.className = user === 'You' ? 'user-message' : 'ai-message';
+            messageElement.innerHTML = `<strong>${user}</strong> ${formatText(text)}`;
+            chatContainer.appendChild(messageElement);
 
-           fetch('/api/generate', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
-               body: JSON.stringify({ input: userInput, history: conversationHistory })
-           })
-           .then(response => response.json())
-           .then(data => {
-               appendToConversation('You', userInput);
-               appendToConversation('Mustafa AI  <br><br>', data.response);
-               conversationHistory = data.history;
-           })
-           .catch(error => {
-               console.error('Error:', error);
-           });
+            // Scroll to the bottom for better visibility of the latest messages
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
 
-           document.getElementById('userInput').value = '';
-       }
+        function formatText(text) {
+            return text.replace(/\n/g, '<br>');
+        }
 
-       function clearConversation() {
-           fetch('/api/generate', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
-               body: JSON.stringify({ input: 'clear', history: conversationHistory })
-           })
-           .then(response => response.json())
-           .then(data => {
-               document.getElementById('conversation').innerHTML = '';
-               conversationHistory = data.history;
-           })
-           .catch(error => {
-               console.error('Error:', error);
-           });
-       }
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            if (!userInput) return;
 
-       function handleKeyDown() {
-           if (event.key === 'Enter') {
-               sendMessage();
-           }
-       }
-   </script>
+            fetch('/api/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ input: userInput, history: conversationHistory })
+            })
+            .then(response => response.json())
+            .then(data => {
+                appendToConversation('You', userInput);
+                appendToConversation('Mustafa AI  <br><br>', data.response);
+                conversationHistory = data.history;
+            })
+            .catch(error => { console.error('Error:', error); });
+
+            document.getElementById('userInput').value = '';
+        }
+
+        function clearConversation() {
+            fetch('/api/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ input: 'clear', history: conversationHistory })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('conversation').innerHTML = '';
+                conversationHistory = data.history;
+            })
+            .catch(error => { console.error('Error:', error); });
+        }
+
+        function handleKeyDown() {
+            if (event.key === 'Enter') sendMessage();
+        }
+    </script>
 </body>
 </html>
