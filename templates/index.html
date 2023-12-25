@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>MUSTAFA Ai Web Interface</title>
+
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+           display: flex;
+           flex-direction: column;
+           height: 100vh;
+           justify-content: space-between;
+       }
+
+       .chat-container {
+           border: 0px solid #ccc;
+           padding: 85px;
+           margin-bottom: 85px;
+           max-width: 10000px;
+           margin: auto;
+       }
+
+       .user-message, .ai-message {
+           padding: 15px;
+           margin-bottom: 10px;
+           border-radius: 10px;
+           word-wrap: break-word;
+       }
+
+       .user-message {
+           background-color: #e6f7ff;
+       }
+
+       .ai-message {
+           background-color: #f0f0f0;
+       }
+
+       #userInputContainer {
+           position: fixed;
+           bottom: 0;
+           width: 100%;
+           background-color: #fff;
+           box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+           padding: 15px;
+           box-sizing: border-box;
+           display: flex;
+           align-items: center;
+           z-index: 999;
+       }
+
+       #userInput {
+           width: calc(90% - 20px);
+           padding: 15px;
+           box-sizing: border-box;
+           font-size: 16px;
+           border: 1px solid #ddd;
+           border-radius: 50px; /* Round shape */
+           outline: none;
+       }
+
+       #refreshButton {
+           padding: 10px;
+           box-sizing: border-box;
+           font-size: 16px;
+           background-color: #3498db;
+           color: #fff;
+           border: none;
+           border-radius: 50%; /* Round shape */
+           cursor: pointer;
+           margin-left: 10px;
+       }
+
+       #refreshButton:hover {
+           background-color: #2980b9;
+       }
+   </style>
+</head>
+<body>
+   <div class="chat-container" id="conversation"></div>
+   <div id="userInputContainer">
+       <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown()">
+       <button id="refreshButton" onclick="clearConversation()">↻</button>
+   </div>
+
+   <script>
+       let conversationHistory = "";
+
+       function appendToConversation(user, text) {
+           const chatContainer = document.getElementById('conversation');
+           const messageElement = document.createElement('p');
+           messageElement.className = user === 'You' ? 'user-message' : 'ai-message';
+           messageElement.innerHTML = `<strong>${user}</strong> ${formatText(text)}`;
+           chatContainer.appendChild(messageElement);
+
+           // Scroll to the bottom for better visibility of the latest messages
+           chatContainer.scrollTop = chatContainer.scrollHeight;
+       }
+
+       function formatText(text) {
+           // Replace line breaks with HTML line breaks
+           return text.replace(/\n/g, '<br>');
+       }
+
+       function sendMessage() {
+           const userInput = document.getElementById('userInput').value;
+           if (!userInput) return;
+
+           fetch('/api/generate', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ input: userInput, history: conversationHistory })
+           })
+           .then(response => response.json())
+           .then(data => {
+               appendToConversation('You', userInput);
+               appendToConversation('Mustafa AI  <br><br>', data.response);
+               conversationHistory = data.history;
+           })
+           .catch(error => {
+               console.error('Error:', error);
+           });
+
+           document.getElementById('userInput').value = '';
+       }
+
+       function clearConversation() {
+           fetch('/api/generate', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ input: 'clear', history: conversationHistory })
+           })
+           .then(response => response.json())
+           .then(data => {
+               document.getElementById('conversation').innerHTML = '';
+               conversationHistory = data.history;
+           })
+           .catch(error => {
+               console.error('Error:', error);
+           });
+       }
+
+       function handleKeyDown() {
+           if (event.key === 'Enter') {
+               sendMessage();
+           }
+       }
+   </script>
+</body>
+</html>
