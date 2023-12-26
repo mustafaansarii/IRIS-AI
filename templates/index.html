@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mustafa AI</title>
     <!-- Add the following line to include the image in the title bar -->
-    <link rel="icon" href="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" type="image/x-icon"width="25" height="625" style="border-radius: 20px;">
+    <link rel="icon" href="https://png.pngtree.com/png-vector/20220802/ourmid/pngtree-3d-rpa-cute-robot-cartoon-sky-blue-gradients-color-chatbot-png-image_6093532.png" type="image/x-icon"width="25" height="625" style="border-radius: 20px;">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,7 +106,7 @@
             right: 5px;
             cursor: pointer;
             color: #3498db;
-            font-size: 13px;
+            font-size: 15px;
         }
 
         #userInputContainer {
@@ -263,7 +263,7 @@
             messageElement.className = user === 'You' ? 'user-message' : 'ai-message';
 
             // Add a copy icon within each response
-            const copyIcon = `<span class="copy-icon-message" onclick="copyConversation(this)">&#x1F4CB;</span>`;
+            const copyIcon = `<span class="copy-icon-message" onclick="copyConversation(this)">&#x1F4C4;</span>`;
 
             messageElement.innerHTML = `<strong>${user}</strong> ${formatText(text)}${copyIcon}`;
             chatContainer.appendChild(messageElement);
