@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mustafa AI</title>
     <!-- Add the following line to include the image in the title bar -->
-    <link rel="icon" href="https://www.gstatic.com/lamda/images/sparkle_resting_v2_1ff6f6a71f2d298b1a31.gif" type="image/x-icon">
+    <link rel="icon" href="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" type="image/x-icon"width="25" height="625" style="border-radius: 20px;">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -301,7 +301,9 @@
                     document.getElementById('sendButtonContainer').style.display = 'flex';
 
                     appendToConversation('You', userInput);
-                    appendToConversation(' <img src="https://www.gstatic.com/lamda/images/sparkle_resting_v2_1ff6f6a71f2d298b1a31.gif" style="width:26px;height:25px;"> ', data.response);
+                    appendToConversation(' <img src="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Girl in a jacket" width="26" height="26" style="border-radius: 20px;"><br> ' ,    data.response);   
+                     
+                    
                     conversationHistory = data.history;
                 })
                 .catch(error => {
