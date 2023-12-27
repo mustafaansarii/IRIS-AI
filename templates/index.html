@@ -21,7 +21,7 @@
             flex-direction: column;
             height: 100vh;
             justify-content: space-between;
-            background-color:rgb(#9cc8f9,#00ABE4,#ffffff);
+            background-color:#eae5e5;
         }
 
         .header {
@@ -29,9 +29,10 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background-color:#6f6868;
+            background-color:#ffffff;
             color: #ffffff;
-            border-radius: 5px;
+            border-radius: px;
+            font-family: emoji;
         
             height: 10px;
         }
@@ -45,17 +46,19 @@
             display: none;
             cursor: pointer;
             font-size: 24px;
+            color: #000000;
         }
 
         .menu-links {
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            
         }
 
         .header-link {
             text-decoration: none;
-            color: #ffffff;
+            color: #000000;
             font-weight: bold;
             margin-left: 20px;
         }
@@ -75,7 +78,7 @@
 
         .user-message{
             padding: 15px;
-            margin-bottom: 60px;
+            margin-bottom: 0px;
             border-radius: 10px;
             word-wrap: break-word;
             position: relative;;
@@ -86,7 +89,7 @@
         }
 
         .ai-message {
-            padding: 15px;
+            padding: 10px;
             margin-bottom: 60px;
             border-radius: 10px;
             word-wrap: break-word;
@@ -95,11 +98,11 @@
         }
 
         .user-message {
-            background-color: #91b4f662;
+            background-color: #ffffff62;
         }
 
         .ai-message {
-            background-color: rgb(220, 241, 255)
+            background-color: rgb(228, 227, 216)
         }
 
         .copy-icon-message {
@@ -202,9 +205,9 @@
                 top: 60px;
                 left: 0;
                 width: 100%;
-                background-color: rgb(247, 175, 133);
+                background-color: rgb(255, 255, 255);
                 text-align: center;
-                border-radius: 20%;
+                border-radius: 
             }
 
             .menu-links a {
@@ -223,7 +226,7 @@
     <div class="header">
         <div style="display: flex; align-items: center;">
 
-            <span style="font-family: Arial, sans-serif; font-size: 25px; color: #ffffff; font-weight: bold; margin-left: 2px;">
+            <span style="font-family: Arial, sans-serif;font-family: emoji; font-size: 25px; color: #000000; font-weight: bold; margin-left: 2px;">
                 🤖
                M.AI</span>
         </div>
@@ -310,7 +313,7 @@
                     document.getElementById('loadingButton').style.display = 'none';
                     document.getElementById('sendButtonContainer').style.display = 'flex';
 
-                    appendToConversation('You', userInput);
+                    appendToConversation('You-', userInput);
                     appendToConversation(' <img src="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Girl in a jacket" width="26" height="26" style="border-radius: 20px;"><br> ' ,    data.response);   
                      
                     
