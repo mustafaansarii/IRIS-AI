@@ -1,376 +1,377 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta name="google-site-verification" content="eozMG3aKOe2Uww-hvOc8_ck_2rDUUYGzydwu0NIYBAQ" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <title>mustafa ansari |  data scientist</title>
-  <meta name="description"
-    content="Data Scientist: Unraveling the Secrets of Data" />
-  <meta name="author" content="Mustafa ansari" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.AI</title>
+    <!-- Add the following line to include the image in the title bar -->
+    <link rel="icon" href="https://png.pngtree.com/png-vector/20220802/ourmid/pngtree-3d-rpa-cute-robot-cartoon-sky-blue-gradients-color-chatbot-png-image_6093532.png" type="image/x-icon"width="25" height="625" style="border-radius: 20px;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="mustafa ansari | data scientist" />
-  <meta property="og:site_name" content="Mustafa ansari Portfolio" />
-  <meta property="og:url" content="https://www.mustafaansari.rf.gd/" />
-  <meta property="og:description"
-    content="In the realm of information technology, where data has become the new gold, a data scientist emerges as a modern-day alchemist" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="mutafaa.rf.gd/" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+            background-color:#eae5e5;
+        }
 
-  <link href='https://d33wubrfki0l68.cloudfront.net/css/134159683fc0e467a64ae99e3aa3783a3daaf7e2/css/style.css' rel='stylesheet'/>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color:#ffffff;
+            color: #ffffff;
+            border-radius: px;
+            font-family: emoji;
+        
+            height: 10px;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
-    rel="stylesheet" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QD9ESD1D9K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || []
-    function gtag() {
-      dataLayer.push(arguments)
-    }
-    gtag('js', new Date())
+        .logo {
+            max-height: 40px;
+            margin-right: 50px;
+        }
 
-    gtag('config', 'G-QD9ESD1D9K')
-  </script>
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #000000;
+        }
+
+        .menu-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            
+        }
+
+        .header-link {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .header-link:hover {
+            text-decoration: underline;
+        }
+
+        .chat-container {
+            border: 0px solid #cccccc;
+            padding: 20px;
+            margin-bottom: 110px;
+            max-width: auto;
+            margin: auto;
+            
+        }
+
+        .user-message{
+            padding: 15px;
+            margin-bottom: 0px;
+            border-radius: 10px;
+            word-wrap: break-word;
+            position: relative;;
+            user-select: none; /* Standard syntax */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            -webkit-user-select: none; /* Safari */
+        }
+
+        .ai-message {
+            padding: 10px;
+            margin-bottom: 60px;
+            border-radius: 10px;
+            word-wrap: break-word;
+            position: relative; /* Add position relative for positioning the copy icon */
+            
+        }
+
+        .user-message {
+            background-color: #ffffff;
+        }
+
+        .ai-message {
+            background-color: rgba(255, 255, 255, 0.792)
+        }
+
+        .copy-icon-message {
+            display: inline-block;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            cursor: pointer;
+            color: #3498db;
+            font-size: 15px;
+        }
+
+        #userInputContainer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #ffffff00;
+            box-shadow: 0px -5px 10px rgba(0, 0, 0, 0);
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #userInput {
+            width: calc(70% - 20px);
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 13px;
+            border: 2px solid #ddddddd9;
+            border-radius: 50px;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        #loadingButton {
+            background-color: #04aa6d00;
+            border: none;
+            color: rgba(0, 0, 0, 0.614);
+            padding: 12px 24px;
+            font-size: 16px;
+            display: none;
+        }
+
+        #sendButtonContainer {
+            width: 40px;
+            height: 40px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: opx;
+        }
+
+        #sendButtonContainer:hover {
+            background-color: #45a049;
+        }
+
+        #refreshButton {
+            background-color: #db3434;
+            color: #fff;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 10px;
+            border: none;
+            border-radius: 100%;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        #refreshButton:hover {
+            background-color: #2980b9;
+        }
+
+        /* Copyright Footer Style */
+        #copyrightFooter {
+            text-align: center;
+            padding: 0px;
+            background-color: #ffffff00;
+            color: #00000072;
+            position: fixed;
+            bottom: 5px;
+            width: 100%;
+            font-size: 10px;
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .menu-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgb(255, 255, 255);
+                text-align: center;
+                border-radius: 
+            }
+
+            .menu-links a {
+                margin: 10px 0;
+            }
+
+            .menu-links.show {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header class="header">
-    <div class="header__content">
-      <div class="header__logo-container">
-        <div class="header__logo-img-cont">
-          <img src="https://scontent.fixc10-1.fna.fbcdn.net/v/t39.30808-6/315444006_916489879325053_1112423995109406989_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D5u1M7Ra2eUAX8u3vFw&_nc_ht=scontent.fixc10-1.fna&oh=00_AfBipChzdw8s_nLdzoGTt-4FQimwcJ_fODjyeE5w-W55fg&oe=658F17C4" alt="Mustafa ansari logo" class="header__logo-img" />
+    <!-- Header Section -->
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+
+            <span style="font-family: Arial, sans-serif;font-family: emoji; font-size: 25px; color: #000000; font-weight: bold; margin-left: 2px;">
+                🤖
+               M.AI</span>
         </div>
-        <span class="header__logo-sub">Mustafa Ansari</span>
-      </div>
-      <div class="header__main">
-        <ul class="header__links">
-          <li class="header__link-wrapper">
-            <a href="./ " class="header__link"> Home </a>
-          </li>
-          <li class="header__link-wrapper">
-            <a href="./#about" class="header__link">About </a>
-          </li>
-          <li class="header__link-wrapper">
-            <a href="./#projects" class="header__link"> Projects </a>
-          </li>
-          <li class="header__link-wrapper">
-            <a href="./#contact" class="header__link"> Contact </a>
-          </li>
-          <li class="header__link-wrapper">
-            <a href="https://linkfree.eddiehub.io/mustafaansarii" class="header__link"> Connect </a>
-          </li>
-        </ul>
-        <div class="header__main-ham-menu-cont">
-          <img src="https://d33wubrfki0l68.cloudfront.net/79e75114856ae61628d2ad26504e3ff4ab2c71b6/f06a4/assets/svg/ham-menu.svg" alt="hamburger menu" class="header__main-ham-menu" />
-          <img src="https://d33wubrfki0l68.cloudfront.net/de2a681c8ca1630b29949b3a34bf158a686a0554/6a0ec/assets/svg/ham-menu-close.svg" alt="hamburger menu close"
-            class="header__main-ham-menu-close d-none" />
-        </div>
-      </div>
-    </div>
-    <div class="header__sm-menu">
-      <div class="header__sm-menu-content">
-        <ul class="header__sm-menu-links">
-          <li class="header__sm-menu-link">
-            <a href="./ "> Home </a>
-          </li>
-
-          <li class="header__sm-menu-link">
-            <a href="./#about"> About </a>
-          </li>
-
-          <li class="header__sm-menu-link">
-            <a href="./#projects"> Projects </a>
-          </li>
-
-          <li class="header__sm-menu-link">
-            <a href="./#contact"> Contact </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
-  <section class="home-hero">
-    <div class="home-hero__content">
-      <h1 class="heading-primary"> <a href="https://www.linkedin.com/in/mustafa-ansari-75059a237/" target="_blank">Hey, I'm Mustafa Ansari</a> </h1>
-      <div class="home-hero__info">
-        <p class="text-primary"> 
-            Welcome to my website! I'm a passionate and driven Computer Science student with an insatiable curiosity for technology and its limitless possibilities. From a young age, I found myself captivated by the world of computers and programming, which led me to embark on this exciting journey in the realm of computing.
-        </p>
-      </div>
-      <div class="home-hero__cta">
-        <a href="./#projects" class="btn btn--bg">Projects</a>
-      </div>
-    </div>
-    <div class="home-hero__socials">
-      <div class="home-hero__social">
-        <a href="https://www.linkedin.com/in/mustafa-ansari-75059a237/" class="home-hero__social-icon-link" rel="noreferrer"
-          target="_blank">
-          <img src="https://d33wubrfki0l68.cloudfront.net/d8e6e1e636531e28274a1b8b6d947b817f6145bd/d42d3/assets/svg/linkedin-dark.svg" alt="mustafaansari Linkedin Profile"
-            class="home-hero__social-icon" />
-        </a>
-      </div>
-      <div class="home-hero__social">
-        <a href="https://twitter.com/mustafa_nds" class="home-hero__social-icon-link" rel="noreferrer" target="_blank">
-          <img src="https://d33wubrfki0l68.cloudfront.net/ba3ef9fd9d500c55ba265adae6087ba71e05f5d9/d0067/assets/svg/twitter-dark.svg" alt="mustafa Twitter Profile" class="home-hero__social-icon" />
-        </a>
-      </div>
-      <div class="home-hero__social">
-        <a href="https://www.youtube.com/@mustafasmartX"
-          class="home-hero__social-icon-link home-hero__social-icon-link--bd-none" rel="noreferrer" target="_blank">
-          <img src="https://d33wubrfki0l68.cloudfront.net/7c95be3350552a5e9f2fc47f1bdbac118ea4dcee/f7a5e/assets/svg/yt-dark.svg" alt="mustafa Youtube Channel" class="home-hero__social-icon" />
-        </a>
-      </div>
-      <div class="home-hero__social">
-        <a href="https://github.com/mustafaansarii" class="home-hero__social-icon-link" rel="noreferrer" target="_blank">
-          <img src="https://d33wubrfki0l68.cloudfront.net/38469cf88d038b6ba3322c9fcb93a8f7167df4b9/cb0b9/assets/svg/github-dark.svg" alt="mustafa Github Profile" class="home-hero__social-icon" />
-        </a>
-      </div>
-
-      <div class="home-hero__social">
-        <a href="https://hashnode.com/@mustafaansari" class="home-hero__social-icon-link" rel="noreferrer" target="_blank">
-          <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1611902473383/CDyAuTy75.png?auto=compress" alt="mustafa hashnode Blog Profile" class="home-hero__social-icon" />
-        </a>
-        <a href="https://linkfree.eddiehub.io/mustafaansarii" class="home-hero__social-icon-link" rel="noreferrer" target="_blank">
-          <img src="https://letsconnect.world/wp-content/uploads/2019/09/cropped-LetsConnect-Icon.png" alt="mustafa hashnode Blog Profile" class="home-hero__social-icon" />
-        </a>
-      </div>
-    </div>
-    <div class="home-hero__mouse-scroll-cont">
-      <div class="mouse"></div>
-    </div>
-  </section>
-  <section id="about" class="about sec-pad">
-    <div class="main-container">
-      <h2 class="heading heading-sec heading-sec__mb-med">
-        <span class="heading-sec__main">About Me</span>
-        <span class="heading-sec__sub">
-          Here you will find more information about me, what I do, and my
-          current skills mostly in terms of programming and technology
-        </span>
-      </h2>
-      <div class="about__content">
-        <div class="about__content-main">
-          <h3 class="about__content-title">Get to know me!</h3>
-          <div class="about__content-details">
-            <p class="about__content-details-para">
-              I am a passionate and driven data science student with a keen interest in unraveling the hidden insights within complex datasets. My journey in the field of data science began with a fascination for problem-solving and a desire to make a meaningful impact through data-driven decision-making. Check out some of my work in the
-              <strong>Projects</strong> section.
-            </p>
-            <p class="about__content-details-para">
-              I also like sharing content related to the stuff that I have
-              learned over the years in <strong>Web Development</strong> so it
-              can help other people of the Dev Community. Feel free to Connect
-              or Follow me on my
-              <a rel="noreferrer" href="https://www.linkedin.com/in/mustafa-ansari-75059a237/" target="_blank">Linkedin</a>
-              where I post useful content related to technology and
-              Programming
-            </p>
-            <p class="about__content-details-para">
-              I'm open to <strong>Job</strong> opportunities where I can
-              contribute, learn and grow. If you have a good opportunity that
-              matches my skills and experience then don't hesitate to
-              <strong>contact</strong> me.
-            </p>
-          </div>
-          <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr">Contact</a>
-        </div>
-        <div class="about__content-skills">
-          <h3 class="about__content-title">My Skills</h3>
-          <div class="skills">
-            <div class="skills__skill">HTML</div>
-            <div class="skills__skill">KIVY</div>
-            <div class="skills__skill">data structure</div>
         
-            <div class="skills__skill">Soft Skills</div>
-            <div class="skills__skill">GIT</div>
-            <div class="skills__skill">Github</div>
-            <div class="skills__skill">Flask</div>
-            <div class="skills__skill">JAVA</div>
-            <div class="skills__skill">Web Design</div>
-            <div class="skills__skill">Python</div>
-            <div class="skills__skill">Data analytic</div>
-            <div class="skills__skill">DSA</div>
-            <div class="skills__skill">OS</div>
-          </div>
+
+        <!-- Hamburger Menu Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <!-- Header Links -->
+        <div class="menu-links">
+            <a href="http://mustafaansari.rf.gd/" class="header-link">About</a>
+            <a href="https://github.com/mustafaansarii" class="header-link">Projects</a>
+            <a href="https://www.linkedin.com/in/mustafands/" class="header-link">Contacts</a>
         </div>
-      </div>
     </div>
-  </section>
-  <section id="projects" class="projects sec-pad">
-    <div class="main-container">
-      <h2 class="heading heading-sec heading-sec__mb-bg">
-        <span class="heading-sec__main">Projects</span>
-        <span class="heading-sec__sub">
-          Here you will find some of the  projects that I
-          created with each project containing its own case study
-        </span>
-      </h2>
 
-      <div class="projects__content">
-        <div class="projects__row">
-          <div class="projects__row-img-cont">
-            <img src="https://scontent.fixc10-2.fna.fbcdn.net/v/t39.30808-6/413911965_272700582482114_6160150642222557543_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=Uf2xjXcKe0sAX9Q0nT0&_nc_ht=scontent.fixc10-2.fna&oh=00_AfB1Kx4V6kzn3B_xQv4u2nPi_xqROGGaW9AQmICYJY1q7g&oe=6590C408" alt="Software Screenshot" class="projects__row-img"
-              loading="lazy" />
-          </div>
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title">Biodrop</h3>
-            <p class="projects__row-content-desc">
-              people easily discover you and your links to your social accounts and content. Find out how many times your Profile has been viewed and your links clicked.
-            </p>
-            <a class='btn btn--med btn--theme dynamicBgClr' href='https://www.biodrop.io/mustafaansarii' target='_blank'>Viewe</a>
-          </div>
+    <!-- Chat Container -->
+    <div class="chat-container" id="conversation"></div>
+
+    <!-- User Input Section with Loading Button -->
+    <div id="userInputContainer">
+        <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown()">
+        <!-- Loading button initially hidden -->
+        <button id="loadingButton">
+            <i class="fa fa-spinner fa-spin"></i> Responding
+        </button>
+        <!-- Send button replaced with icon container -->
+        <div id="sendButtonContainer" onclick="sendMessage()">
+            <i class="material-icons">send</i>
         </div>
-        <div class="projects__row">
-          <div class="projects__row-img-cont">
-            <img src="https://scontent.fixc10-2.fna.fbcdn.net/v/t39.30808-6/413824417_272700629148776_7102516020344421253_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=d_Lf2QyatTIAX-k-s5y&_nc_oc=AQm2M1HAs4aRHcENmT8TP88utT7DQEiPGLS2HlJdUGF236q8_1pGP7CGomw_u1ZWr6Q&_nc_ht=scontent.fixc10-2.fna&oh=00_AfBHbEJsRzd__36SwDqN2rpkI2ijGvYR4lqqrxQya7Obkw&oe=658F87BF"  alt="M.AI" class="projects__row-img"
-              loading="lazy" />
-          </div>
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title">M.AI</h3>
-            <p class="projects__row-content-desc">
-              <h2>Making an AI Webpage Using the Gemini API
-              </h2>
-              <h4>we will delve into the fascinating journey of creating an AI-powered web application harnessing the capabilities of the Gemini API. This AI-driven webpage will provide users with an interactive platform to explore various features and interact with AI-based services.
-            
-              </h4>
-            </p>
-            <a class='btn btn--med btn--theme dynamicBgClr' href='https://mustafaai-xjlh.onrender.com/' target='_blank'>Chat.AI</a>
-          </div>
+        <!-- Refresh button in red round shape -->
+        <div id="refreshButton" onclick="clearConversation()">
+            <i class="fa fa-refresh"></i>
         </div>
-        <div class="projects__row">
-          <div class="projects__row-img-cont">
-            <img src="https://scontent.fixc10-2.fna.fbcdn.net/v/t39.30808-6/413966818_272700655815440_8590479363269733068_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=VugW7PALO6QAX8y1ST4&_nc_ht=scontent.fixc10-2.fna&oh=00_AfC2m5aGfFE7JpW9kaEcKTzydNGFhWf9cfqjIQ5Ldfemew&oe=65907F27" alt="Software Screenshot" class="projects__row-img"
-              loading="lazy" />
-          </div>
-          
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title">Github</h3>
-            <p class="projects__row-content-desc">
-              GitHub is a web-based platform that uses Git for version control. It is widely used in the software development community for collaborative coding, version control, and project management.
-<pre>
-            <a class='btn btn--med btn--theme dynamicBgClr' href='https://github.com/mustafaansarii' target='_blank'>LinkFree</a> </pre>
-          </div>
-        </div> </pre>
-         <div class="projects__row">
-          <div class="projects__row-img-cont">
-            <img src="https://mustafaansariin.files.wordpress.com/2023/03/mmr.jpg?w=940" alt="Software Screenshot" class="projects__row-img"
-              loading="lazy" />
-          </div>
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title"> portfolio website</h3>
-            <p class="projects__row-content-desc">
-              Recently i Developed a personal portfolio website you can Checkout,
-              A portfolio website should be used as an opportunity to surprise and impress your potential clients. 
-             </p>
-            <a class='btn btn--med btn--theme dynamicBgClr' href='http://mustafaa.kesug.com/?i=1' target='_blank'>Visit</a>
-          </div>
-        </div> 
-      </div>
     </div>
-  </section>
-  <section id="contact" class="contact sec-pad dynamicBg">
-    <div class="main-container">
-      <h2 class="heading heading-sec heading-sec__mb-med">
-        <span class="heading-sec__main heading-sec__main--lt">Contact</span>
-        <span class="heading-sec__sub heading-sec__sub--lt">
-          Feel free to Contact me by submitting the form below and I will get
-          back to you as soon as possible
-        </span>
-      </h2>
-      <div class="contact__form-container">
-        <form action='#' class='contact__form' method='post'><input type='hidden' name='form-name' value='form 1' />
-          <div class="contact__form-field">
-            <label class="contact__form-label" for="name">Name</label>
-            <input required placeholder="Enter Your Name" type="text" class="contact__form-input" name="name"
-              id="name" />
-          </div>
-          <div class="contact__form-field">
-            <label class="contact__form-label" for="email">Email</label>
-            <input required placeholder="Enter Your Email" type="email" class="contact__form-input" name="email"
-              id="email" />
-          </div>
-          <div class="contact__form-field">
-            <label class="contact__form-label" for="message">Message</label>
-            <textarea required cols="30" rows="10" class="contact__form-input" placeholder="Enter Your Message"
-              name="message" id="message"></textarea>
-          </div>
-          <button type="submit" class="btn btn--theme contact__btn">
-            Submit
-          </button>
-        </form>
-      </div>
+
+    <!-- Copyright Footer -->
+    <div id="copyrightFooter">
+        It can make mistakes. Consider checking important information
     </div>
-  </section>
-  <footer class="main-footer">
-    <div class="main-container">
-      <div class="main-footer__upper">
-        <div class="main-footer__row main-footer__row-1">
-          <h2 class="heading heading-sm main-footer__heading-sm">
-            <span>Social</span>
-          </h2>
-          <div class="main-footer__social-cont">
-            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mustafa-ansari-75059a237/">
-              <img class="main-footer__icon" src="https://d33wubrfki0l68.cloudfront.net/7f29579dde49e02480372aa49f7189c5536b0118/34b92/assets/png/linkedin-ico.png"
-                alt="Mustafa ansari Linkedin Profile" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://github.com/mustafaansarii">
-              <img class="main-footer__icon" src="https://d33wubrfki0l68.cloudfront.net/5557d5a11584d7201a38ee1a95200f57a4cc0f88/15085/assets/png/github-ico.png" alt="mustafa Github Profile" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://twitter.com/mustafa_nds">
-              <img class="main-footer__icon" src="https://d33wubrfki0l68.cloudfront.net/ef67339f7016cb09ba66366c1dc9145ac69f2a21/feca1/assets/png/twitter-ico.png" alt="mustafa Twitter Profile" />
-            </a>
 
-            <a target="_blank" rel="noreferrer" href="https://hashnode.com/@mustafaansari">
-              <img class="main-footer__icon" src="https://cdn.hashnode.com/res/hashnode/image/upload/v1611902473383/CDyAuTy75.png?auto=compress" alt="mustafa Blog Profile" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@mustafasmartX">
-              <img class="main-footer__icon main-footer__icon--mr-none" src="https://d33wubrfki0l68.cloudfront.net/493f1aa6da674c05bc606ba5b9e8092b881e8626/67c76/assets/png/yt-ico.png"
-                alt="mustafa Youtube Channel" />
-            </a>
+    <script>
+        let conversationHistory = "";
 
-             <a target="_blank" rel="noreferrer" href="https://linkfree.eddiehub.io/mustafaansarii">
-              <img class="main-footer__icon" src="https://letsconnect.world/wp-content/uploads/2019/09/cropped-LetsConnect-Icon.png" alt="Let's Connect" />
-            </a>
-          
-          </div>
-        </div>
-        <div class="main-footer__row main-footer__row-2.5">
-          <h1 class="heading heading-sm text-lt">Privacy Policy</h1>
-          <p class="main-footer__short-desc"> 
-<p><pre>At this site, accessible from Mustafa, one of our main priorities is the privacy of our visitors. This Privacy Policy 
-document contains types of information that is collected and recorded by mustafaansari and how we use it. </pre></p>
-<p>If you ha</pre>d offline or via channels other than this website.</p>
-<h2>Consent</h2>
-<p><pre> By using our website, you hereby consent to our Privacy Policy and agree to its terms.</pre></p>  
+        function appendToConversation(user, text) {
+            const chatContainer = document.getElementById('conversation');
+            const messageElement = document.createElement('p');
+            messageElement.className = user === 'You' ? 'user-message' : 'ai-message';
 
+            // Add a copy icon within each response
+            const copyIcon = `<span class="copy-icon-message" onclick="copyConversation(this)">&#x1F4C4;</span>`;
 
+            messageElement.innerHTML = `<strong>${user}</strong> ${formatText(text)}${copyIcon}`;
+            chatContainer.appendChild(messageElement);
 
+            // Scroll to the bottom for better visibility of the latest messages
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
 
-</ul>
+        function formatText(text) {
+            return text.replace(/\n/g, '<br>');
+        }
 
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            if (!userInput) return;
 
-          </p>
-        </div>
-      </div>
+            // Show loading button, hide send button
+            document.getElementById('loadingButton').style.display = 'block';
+            document.getElementById('sendButtonContainer').style.display = 'none';
 
-      <p> If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) </p> <hr>
-      <div class="main-footer__lower">
-       
-       © <script>document.write(new Date().getFullYear())</script>. Made by
-        <a rel="noreferrer" target="_blank" href="https://www.instagram.com/mustafa.nds/">Mustafa ansari</a>
-      </div>
-    </div>
-  </footer>
+            fetch('/api/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    input: userInput,
+                    history: conversationHistory
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading button, show send button
+                    document.getElementById('loadingButton').style.display = 'none';
+                    document.getElementById('sendButtonContainer').style.display = 'flex';
 
-  <script src='https://d33wubrfki0l68.cloudfront.net/js/96f5c0d4b9bdbf07570efd8e94cb7db7a5191a01/index.js'></script>
+                    appendToConversation('You-', userInput);
+                    appendToConversation(' <img src="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Girl in a jacket" width="26" height="26" style="border-radius: 20px;"><br> ' ,    data.response);   
+                     
+                    
+                    conversationHistory = data.history;
+                })
+                .catch(error => {
+                    // Hide loading button, show send button on error
+                    document.getElementById('loadingButton').style.display = 'none';
+                    document.getElementById('sendButtonContainer').style.display = 'flex';
+                    console.error('Error:', error);
+                });
 
+            document.getElementById('userInput').value = '';
+        }
+
+        function clearConversation() {
+            fetch('/api/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    input: 'clear',
+                    history: conversationHistory
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('conversation').innerHTML = '';
+                    conversationHistory = data.history;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function handleKeyDown() {
+            if (event.key === 'Enter') sendMessage();
+        }
+
+        function toggleMenu() {
+            const menuLinks = document.querySelector('.menu-links');
+            menuLinks.classList.toggle('show');
+        }
+
+        function copyConversation(icon) {
+            const textToCopy = icon.parentElement.innerText.trim();
+
+            const textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            alert('Response copied!');
+        }
+    </script>
 </body>
 
 </html>
