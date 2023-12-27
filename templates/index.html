@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.AI</title>
+    <!-- Add the following line to include the image in the title bar -->
+    <link rel="icon" href="https://png.pngtree.com/png-vector/20220802/ourmid/pngtree-3d-rpa-cute-robot-cartoon-sky-blue-gradients-color-chatbot-png-image_6093532.png" type="image/x-icon"width="25" height="625" style="border-radius: 20px;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+            background-color:#eae5e5;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color:#ffffff;
+            color: #ffffff;
+            border-radius: px;
+            font-family: emoji;
+        
+            height: 10px;
+        }
+
+        .logo {
+            max-height: 40px;
+            margin-right: 50px;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #000000;
+        }
+
+        .menu-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            
+        }
+
+        .header-link {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .header-link:hover {
+            text-decoration: underline;
+        }
+
+        .chat-container {
+            border: 0px solid #cccccc;
+            padding: 20px;
+            margin-bottom: 110px;
+            max-width: auto;
+            margin: auto;
+            
+        }
+
+        .user-message{
+            padding: 15px;
+            margin-bottom: 0px;
+            border-radius: 10px;
+            word-wrap: break-word;
+            position: relative;;
+            user-select: none; /* Standard syntax */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            -webkit-user-select: none; /* Safari */
+        }
+
+        .ai-message {
+            padding: 10px;
+            margin-bottom: 60px;
+            border-radius: 10px;
+            word-wrap: break-word;
+            position: relative; /* Add position relative for positioning the copy icon */
+            
+        }
+
+        .user-message {
+            background-color: #ffffff;
+        }
+
+        .ai-message {
+            background-color: rgba(255, 255, 255, 0.792)
+        }
+
+        .copy-icon-message {
+            display: inline-block;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            cursor: pointer;
+            color: #3498db;
+            font-size: 15px;
+        }
+
+        #userInputContainer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #ffffff00;
+            box-shadow: 0px -5px 10px rgba(0, 0, 0, 0);
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #userInput {
+            width: calc(70% - 20px);
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 13px;
+            border: 2px solid #ddddddd9;
+            border-radius: 50px;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        #loadingButton {
+            background-color: #04aa6d00;
+            border: none;
+            color: rgba(0, 0, 0, 0.614);
+            padding: 12px 24px;
+            font-size: 16px;
+            display: none;
+        }
+
+        #sendButtonContainer {
+            width: 40px;
+            height: 40px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: opx;
+        }
+
+        #sendButtonContainer:hover {
+            background-color: #45a049;
+        }
+
+        #refreshButton {
+            background-color: #db3434;
+            color: #fff;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 10px;
+            border: none;
+            border-radius: 100%;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        #refreshButton:hover {
+            background-color: #2980b9;
+        }
+
+        /* Copyright Footer Style */
+        #copyrightFooter {
+            text-align: center;
+            padding: 0px;
+            background-color: #ffffff00;
+            color: #00000072;
+            position: fixed;
+            bottom: 5px;
+            width: 100%;
+            font-size: 10px;
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .menu-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgb(255, 255, 255);
+                text-align: center;
+                border-radius: 
+            }
+
+            .menu-links a {
+                margin: 10px 0;
+            }
+
+            .menu-links.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+
+            <span style="font-family: Arial, sans-serif;font-family: emoji; font-size: 25px; color: #000000; font-weight: bold; margin-left: 2px;">
+                🤖
+               M.AI</span>
+        </div>
+        
+
+        <!-- Hamburger Menu Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <!-- Header Links -->
+        <div class="menu-links">
+            <a href="http://mustafaansari.rf.gd/" class="header-link">About</a>
+            <a href="https://github.com/mustafaansarii" class="header-link">Projects</a>
+            <a href="https://www.linkedin.com/in/mustafands/" class="header-link">Contacts</a>
+        </div>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chat-container" id="conversation"></div>
+
+    <!-- User Input Section with Loading Button -->
+    <div id="userInputContainer">
+        <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown()">
+        <!-- Loading button initially hidden -->
+        <button id="loadingButton">
+            <i class="fa fa-spinner fa-spin"></i> Responding
+        </button>
+        <!-- Send button replaced with icon container -->
+        <div id="sendButtonContainer" onclick="sendMessage()">
+            <i class="material-icons">send</i>
+        </div>
+        <!-- Refresh button in red round shape -->
+        <div id="refreshButton" onclick="clearConversation()">
+            <i class="fa fa-refresh"></i>
+        </div>
+    </div>
+
+    <!-- Copyright Footer -->
+    <div id="copyrightFooter">
+        It can make mistakes. Consider checking important information
+    </div>
+
+    <script>
+        let conversationHistory = "";
+
+        function appendToConversation(user, text) {
+            const chatContainer = document.getElementById('conversation');
+            const messageElement = document.createElement('p');
+            messageElement.className = user === 'You' ? 'user-message' : 'ai-message';
+
+            // Add a copy icon within each response
+            const copyIcon = `<span class="copy-icon-message" onclick="copyConversation(this)">&#x1F4C4;</span>`;
+
+            messageElement.innerHTML = `<strong>${user}</strong> ${formatText(text)}${copyIcon}`;
+            chatContainer.appendChild(messageElement);
+
+            // Scroll to the bottom for better visibility of the latest messages
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function formatText(text) {
+            return text.replace(/\n/g, '<br>');
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            if (!userInput) return;
+
+            // Show loading button, hide send button
+            document.getElementById('loadingButton').style.display = 'block';
+            document.getElementById('sendButtonContainer').style.display = 'none';
+
+            fetch('/api/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    input: userInput,
+                    history: conversationHistory
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading button, show send button
+                    document.getElementById('loadingButton').style.display = 'none';
+                    document.getElementById('sendButtonContainer').style.display = 'flex';
+
+                    appendToConversation('You-', userInput);
+                    appendToConversation(' <img src="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Girl in a jacket" width="26" height="26" style="border-radius: 20px;"><br> ' ,    data.response);   
+                     
+                    
+                    conversationHistory = data.history;
+                })
+                .catch(error => {
+                    // Hide loading button, show send button on error
+                    document.getElementById('loadingButton').style.display = 'none';
+                    document.getElementById('sendButtonContainer').style.display = 'flex';
+                    console.error('Error:', error);
+                });
+
+            document.getElementById('userInput').value = '';
+        }
+
+        function clearConversation() {
+            fetch('/api/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    input: 'clear',
+                    history: conversationHistory
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('conversation').innerHTML = '';
+                    conversationHistory = data.history;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function handleKeyDown() {
+            if (event.key === 'Enter') sendMessage();
+        }
+
+        function toggleMenu() {
+            const menuLinks = document.querySelector('.menu-links');
+            menuLinks.classList.toggle('show');
+        }
+
+        function copyConversation(icon) {
+            const textToCopy = icon.parentElement.innerText.trim();
+
+            const textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            alert('Response copied!');
+        }
+    </script>
+</body>
+
+</html>
