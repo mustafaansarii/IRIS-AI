@@ -42,4 +42,3 @@ Deploy your AI-based webpage on a suitable platform to make it accessible to use
 
  Conclusion: 
 Through this project, you will create an AI-driven web application using the Gemini API, demonstrating the potential of AI in enhancing user engagement and offering personalized experiences. This webpage will serve as a dynamic platform for exploring the capabilities of AI in web development.
-📋
