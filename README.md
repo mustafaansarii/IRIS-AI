@@ -1,4 +1,4 @@
-https://iris-m3ph.onrender.com/
+iris-m3ph.onrender.com
 
 IRIS - Intelligent Robotic Interactive System
 
@@ -42,5 +42,4 @@ Develop interactive features that allow users to interact with your AI-powered w
    8: Deployment and Maintenance: 
 Deploy your AI-based webpage on a suitable platform to make it accessible to users. Regularly monitor the performance of your webpage and maintain its functionality to ensure a seamless user experience.
 
- Conclusion: 
-Through this project, you will create an AI-driven web application using the Gemini API, demonstrating the potential of AI in enhancing user engagement and offering personalized experiences. This webpage will serve as a dynamic platform for exploring the capabilities of AI in web development.
+
