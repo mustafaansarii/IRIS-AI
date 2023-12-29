@@ -1,6 +1,1 @@
-[build]
-  command = "python app.py"  # Replace with your actual Python script or command
-  publish = "/app.py"  # Replace with the path to your static files or build output directory
 
-[build.environment]
-  PYTHON_VERSION = "3.10"  # Replace with your Python version
