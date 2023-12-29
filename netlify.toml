@@ -1,1 +1,4 @@
+[build]
+  command = "python app.py"  # Adjust this based on your actual build command
 
+  publish = "app.py"              # Adjust this based on your actual publish directory
