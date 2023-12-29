@@ -1,3 +1,3 @@
 [build]
-  command = "gunicorn --bind 0.0.0.0:8000:$PORT app:app"
+  command = "Gunicorn --bind 0.0.0.0:80 app:app"
   publish = "app.py"  # Adjust this based on your actual publish directory
