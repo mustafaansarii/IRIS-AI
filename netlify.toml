@@ -1,4 +1,3 @@
 [build]
-  command = "gunicorn -b :$PORT app:app
-"
+  command = "gunicorn -b :$PORT app:app"
   publish = "app.py"  # Adjust this based on your actual publish directory
