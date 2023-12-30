@@ -1,4 +1,4 @@
 [build]
-  command = "https://github.com/mustafaansarii/IRIS-AI/blob/a3586e0d78cd6b205c912569c98797a11a0a6601/requirements.txt -b 0.0.0.0:80 app:app"
+  command = "/requirements.txt -b 0.0.0.0:80 app:app"
   functions = "functions"
   publish = "public"
