@@ -1,3 +1,4 @@
 [build]
-  command = "Gunicorn --bind 0.0.0.0:80 app:app"
-  publish = "app.py"  # Adjust this based on your actual publish directory
+  command = "echo $PATH && pip list && gunicorn -b 0.0.0.0:80 app:app"
+  functions = "functions"
+  publish = "public"
