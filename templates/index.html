@@ -23,12 +23,12 @@
             height: none;
             justify-content: space-between;
             background-color:#fffdfd;
-            background: #ffffff;
+            background: #363535;
             max-width: 1100px;
             margin: 0 auto;
             padding: 0;
             overflow: none;
-            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1);
+            /* box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1); */
         }
 
         .header {
@@ -36,11 +36,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background-color:#ffffff;
+            background-color:#363535;
             color: #ffffff;
-            border-radius: px;
+            border-radius: 10px;
             font-family: emoji;
-        
+            overflow: hidden;
             height: 10px;
         }
 
@@ -53,33 +53,40 @@
             display: none;
             cursor: pointer;
             font-size: 24px;
-            color: #000000;
+            color: #ffffff;
+            overflow: hidden;
         }
 
         .menu-links {
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            overflow: hidden;
             
         }
 
         .header-link {
             text-decoration: none;
-            color: #000000;
+            color: #ffffff;
             font-weight: bold;
             margin-left: 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            overflow: hidden;
         }
 
         .header-link:hover {
             text-decoration: underline;
+            overflow: hidden;
         }
 
         .chat-container {
-            border: 0px solid #cccccc;
+            border: 0px solid #363535;
             padding:15px;
             margin-bottom: 110px;
             max-width: auto;
             margin: auto;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
             
         }
 
@@ -109,7 +116,7 @@
         }
 
         .ai-message {
-            background-color: rgb(243, 243, 243)
+            background-color: #363535;
         }
 
         .copy-icon-message {
@@ -126,8 +133,8 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #ffffff00;
-            box-shadow: 0px -5px 10px rgba(0, 0, 0, 0);
+            background-color: #ff000000;
+            box-shadow: 0px -5px 10px rgba(12, 12, 12, 0);
             padding: 25px;
             box-sizing: border-box;
             display: flex;
@@ -140,10 +147,12 @@
             padding: 15px;
             box-sizing: border-box;
             font-size: 13px;
-            border: 2px solid #ddddddd9;
+            border: 2px solid rgba(255, 255, 255, 0.851);
             border-radius: 50px;
             outline: none;
             margin-right: 10px;
+            background-color: #2f2e2e;
+            color: #fff; 
         }
 
         #loadingButton {
@@ -181,6 +190,7 @@
             border-radius: 100%;
             cursor: pointer;
             margin-left: 20px;
+            
         }
 
         #refreshButton:hover {
@@ -192,7 +202,7 @@
             text-align: center;
             padding: 0px;
             background-color: #ffffff00;
-            color: #00000072;
+            color: #ffffffcc;
             position: fixed;
             bottom: 5px;
             width: 100%;
@@ -203,6 +213,7 @@
         @media only screen and (max-width: 600px) {
             .menu-icon {
                 display: block;
+                overflow: hidden;
             }
 
             .menu-links {
@@ -212,17 +223,20 @@
                 top: 60px;
                 left: 0;
                 width: 100%;
-                background-color: rgb(150, 3, 130);
+                background-color: rgb(3, 79, 150);
                 text-align: center;
-                border-radius: 
+                overflow: hidden;
+                
             }
 
             .menu-links a {
                 margin: 10px 0;
+                overflow: hidden;
             }
 
             .menu-links.show {
                 display: flex;
+                overflow: hidden;
             }
 
 
@@ -243,7 +257,7 @@
     <div class="header">
         <div style="display: flex; align-items: center;">
 
-            <span style="font-family: Arial, sans-serif;font-family: emoji; font-size: 25px; color: #000000; font-weight: bold; margin-left: 2px;">
+            <span style="font-family: Arial, sans-serif;font-family: emoji; font-size: 25px; color: #ffffff; font-weight: bold; margin-left: 2px;">
                 ⚛️
                IRIS</span>
         </div>
@@ -253,10 +267,9 @@
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <!-- Header Links -->
         <div class="menu-links">
-            <a href="https://github.com/mustafaansarii/IRIS-AI" class="header-link">About</a>
-            <a href="http://mustafaansari.rf.gd/" class="header-link">Projects</a>
+            <a href="http://mustafaansari.rf.gd/IRIS.html" class="header-link">More</a>
+            <a href="http://mustafaansari.rf.gd/project.html" class="header-link">Projects</a>
             <a href="https://www.linkedin.com/in/mustafands/" class="header-link">Contacts</a>
-            <a href="http://mustafaansari.rf.gd/project.html" class="header-link">Download APK</a>
         
 
         </div>
@@ -270,7 +283,7 @@
         <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown()">
         <!-- Loading button initially hidden -->
         <button id="loadingButton">
-            <i class="fa fa-spinner fa-spin"></i> Responding
+            <p style="color:rgb(255, 255, 255);"><i class="fa fa-spinner fa-spin"></i></p> <p style="color:rgb(255, 255, 255);">Responding</p>
         </button>
         <!-- Send button replaced with icon container -->
         <div id="sendButtonContainer" onclick="sendMessage()">
@@ -333,8 +346,8 @@
                     document.getElementById('loadingButton').style.display = 'none';
                     document.getElementById('sendButtonContainer').style.display = 'flex';
 
-                    appendToConversation('You-', userInput);
-                    appendToConversation(' <img src="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Girl in a jacket" width="26" height="26" style="border-radius: 20px;"><br> ' ,    data.response);   
+                    appendToConversation('You <br>', userInput);
+                    appendToConversation(' <img src="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Girl in a jacket" width="26" height="26" style="border-radius: 20px" ><br> ' ,    data.response);   
                      
                     
                     conversationHistory = data.history;
