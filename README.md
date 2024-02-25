@@ -1,4 +1,4 @@
-[iris]([https://iris-ai-lx7v.onrender.com/](https://intelligent-robotic-interactive-system.onrender.com/))
+[Live Site](https://intelligent-robotic-interactive-system.onrender.com/)
 
 IRIS - Intelligent Robotic Interactive System
 
