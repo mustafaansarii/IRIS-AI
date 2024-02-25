@@ -1,7 +1,6 @@
 # IRIS - Intelligent Robotic Interactive System
 
-## Live Site
-[live site](https://intelligent-robotic-interactive-system.onrender.com/)
+[Live site](https://intelligent-robotic-interactive-system.onrender.com/)
 
 ## Section: Making an AI Webpage Using the Gemini API 
 
