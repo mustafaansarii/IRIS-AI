@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IRIS</title>
-    <!-- Add the following line to include the image in the title bar -->
     <link rel="icon" href="https://static-00.iconduck.com/assets.00/atom-symbol-emoji-1024x1024-cqr6dj9q.png" type="image/png" sizes="25x25" style="border-radius: 20px;">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,7 +22,7 @@
             height: none;
             justify-content: space-between;
             background-color:#fffdfd;
-            background: #000000;
+            background: #272626;
             max-width: 1100px;
             margin: 0 auto;
             padding: 0;
@@ -36,7 +35,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background-color:#000000c1;
+            background-color:#2b2929;
             color: #ffffff;
             border-radius: 10px;
             font-family: emoji;
@@ -80,7 +79,7 @@
         }
 
         .chat-container {
-            border: 0px solid #000000;
+            border: 0px solid #272626;
             padding:15px;
             margin-bottom: 110px;
             max-width: auto;
@@ -116,7 +115,7 @@
         }
 
         .ai-message {
-            background-color: #000000;
+            background-color: #272626;
         }
 
         .copy-icon-message {
@@ -251,29 +250,24 @@
         }}
     </style>
 </head>
-
 <body>
     <!-- Header Section -->
     <div class="header">
         <div style="display: flex; align-items: center;">
-
-            <span style="font-family: Arial, sans-serif;font-family: emoji; font-size: 25px; color: #ffffff; font-weight: bold; margin-left: 2px;">
-
+            <span style="font-family: Arial, sans-serif; font-size: 25px; color: #ffffff; font-weight: bold; margin-left: 2px;">
                 <a href="https://intelligent-robotic-interactive-system.onrender.com/">⚛️</a> 
                 <a href="https://intelligent-robotic-interactive-system.onrender.com/">IRIS</a>
-                </span>
+            </span>
         </div>
         
-
         <!-- Hamburger Menu Icon -->
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
         <!-- Header Links -->
         <div class="menu-links">
-            <a href="https://mustafaansari.rf.gd/IRIS%20AI.html" class="header-link">More</a>
-            <a href="https://mustafaansari.rf.gd/#portfolio" class="header-link">Projects</a>
-            <a href="https://mustafaansari.rf.gd/#contact" class="header-link">Contacts</a>
-        
-
+            <a href="https://mustafaansarii.web.app/" class="header-link">More</a>
+            <a href="https://mustafaansarii.web.app/" class="header-link">Projects</a>
+            <a href="https://mustafaansarii.web.app/" class="header-link">Contacts</a>
         </div>
     </div>
 
@@ -282,10 +276,11 @@
 
     <!-- User Input Section with Loading Button -->
     <div id="userInputContainer">
-        <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown()">
+        <input type="text" id="userInput" placeholder="Type here..." onkeydown="handleKeyDown(event)">
         <!-- Loading button initially hidden -->
-        <button id="loadingButton">
-            <p style="color:rgb(255, 255, 255);"><i class="fa fa-spinner fa-spin"></i></p> <p style="color:rgb(255, 255, 255);">Responding</p>
+        <button id="loadingButton" style="display: none;">
+            <p style="color:rgb(255, 255, 255);"><i class="fa fa-spinner fa-spin"></i></p> 
+            <p style="color:rgb(255, 255, 255);">Responding</p>
         </button>
         <!-- Send button replaced with icon container -->
         <div id="sendButtonContainer" onclick="sendMessage()">
@@ -342,24 +337,23 @@
                     history: conversationHistory
                 })
             })
-                .then(response => response.json())
-                .then(data => {
-                    // Hide loading button, show send button
-                    document.getElementById('loadingButton').style.display = 'none';
-                    document.getElementById('sendButtonContainer').style.display = 'flex';
+            .then(response => response.json())
+            .then(data => {
+                // Hide loading button, show send button
+                document.getElementById('loadingButton').style.display = 'none';
+                document.getElementById('sendButtonContainer').style.display = 'flex';
 
-                    appendToConversation('You <br>', userInput);
-                    appendToConversation(' <img src="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Girl in a jacket" width="26" height="26" style="border-radius: 20px" >irisAI<br> ' ,    data.response);   
-                     
-                    
-                    conversationHistory = data.history;
-                })
-                .catch(error => {
-                    // Hide loading button, show send button on error
-                    document.getElementById('loadingButton').style.display = 'none';
-                    document.getElementById('sendButtonContainer').style.display = 'flex';
-                    console.error('Error:', error);
-                });
+                appendToConversation('You <br>', userInput);
+                appendToConversation(' <img src="https://media3.giphy.com/media/3oFzlVJAzNUDwvpcc0/giphy.gif?cid=ecf05e47a3zr9vyiuf7nng3xlspgg6o2zajufsfjyf0sxtv8&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Girl in a jacket" width="26" height="26" style="border-radius: 20px" >irisAI<br>', data.response);
+                
+                conversationHistory = data.history;
+            })
+            .catch(error => {
+                // Hide loading button, show send button on error
+                document.getElementById('loadingButton').style.display = 'none';
+                document.getElementById('sendButtonContainer').style.display = 'flex';
+                console.error('Error:', error);
+            });
 
             document.getElementById('userInput').value = '';
         }
@@ -375,17 +369,17 @@
                     history: conversationHistory
                 })
             })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('conversation').innerHTML = '';
-                    conversationHistory = data.history;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('conversation').innerHTML = '';
+                conversationHistory = data.history;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
 
-        function handleKeyDown() {
+        function handleKeyDown(event) {
             if (event.key === 'Enter') sendMessage();
         }
 
@@ -407,6 +401,8 @@
             alert('Response copied!');
         }
     </script>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</body>
 </html>
